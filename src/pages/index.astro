@@ -1,0 +1,31 @@
+---
+import * as m from "@paraglide/messages"
+import Layout from "../layouts/Layout.astro"
+
+const name = Astro.url.searchParams.get("name") || "traveller"
+
+console.log(Astro)
+---
+
+<Layout>
+  <h1>{m.greeting({ username: name })}</h1>
+  <form>
+    <label>
+      {m.retort()}:
+      <input
+        required
+        value={Astro.url.searchParams.get("name")}
+        type="text"
+        name="name"
+      />
+    </label>
+    <input type="submit" value="Update" />
+  </form>
+  <div style="margin-block: 20px">
+    this is a VERY basic astro page, it uses SSR to pull the username from the
+    url querystring. that's about it
+
+    <br />
+    No javascript was harmed in the making of this page
+  </div>
+</Layout>

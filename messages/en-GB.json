@@ -1,0 +1,5 @@
+{
+  "$schema": "https://inlang.com/schema/inlang-message-format",
+  "greeting": "ello ello ello, {username}",
+  "retort": "As a matter of fact my dear boy, I prefer"
+}

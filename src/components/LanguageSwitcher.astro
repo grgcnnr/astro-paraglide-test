@@ -1,0 +1,84 @@
+---
+import { locales, getLocale, baseLocale, setLocale } from "@paraglide/runtime"
+const currentLang = getLocale()
+const names: Record<typeof currentLang, string> = {
+  en: "English",
+  "fr-CA": "Canadian French",
+  "en-GB": "English again but British"
+}
+
+const localeObjects = locales.map((code) => ({
+  code,
+  name: names[code],
+  pathPrefix: code === baseLocale ? "/" : `/${code}`
+}))
+
+// create a "raw pathname" ith any locale prefix removed
+let pathnameSansLocale = Astro.url.pathname
+
+/*
+start by getting all locales except the base one, we are not including /en/ in the pathname and while it
+should be safe to leave it there, it's not impossible to have a legit path that starts with 'en'
+*/
+const nonBaseLocales = locales.filter((l) => l !== baseLocale)
+
+/*
+make a regex that tests for the existence of nonBaseLocales after the first slash
+`Astro.url.pathname` looks like /fr-CA/a/long/pathname
+*/
+const localePrefixRegex = new RegExp(`^/(${nonBaseLocales.join("|")})(?=/|$)`)
+
+if (localePrefixRegex.test(pathnameSansLocale)) {
+  pathnameSansLocale = pathnameSansLocale.replace(localePrefixRegex, "")
+}
+---
+
+<div id="lang-switcher">
+  {
+    localeObjects.map((localeObject, i) => {
+      return (
+        <>
+          {/*
+            Navigating between locales works, but using setlocale() updates the user's preference cookie too,
+            the href is here as a fallbackx
+           */}
+
+          <a
+            href={
+              localeObject.pathPrefix === "/"
+                ? pathnameSansLocale
+                : localeObject.pathPrefix + pathnameSansLocale
+            }
+            data-locale={localeObject.code}
+            aria-current={
+              currentLang === localeObject.code ? "true" : undefined
+            }
+          >
+            {localeObject.name}
+          </a>
+          {i < localeObjects.length - 1 && " |"}
+        </>
+      )
+    })
+  }
+</div>
+<script>
+  import { isLocale, setLocale } from "@paraglide/runtime"
+  const switcher = document.getElementById("lang-switcher")
+  switcher?.addEventListener("click", (e) => {
+    if (!(e.target instanceof HTMLAnchorElement)) return
+    const value = e.target.getAttribute("data-locale")
+    if (isLocale(value)) {
+      e.preventDefault()
+      setLocale(value)
+    }
+  })
+</script>
+<style>
+  a {
+    text-decoration: none;
+  }
+  a[aria-current] {
+    text-decoration: underline;
+  }
+</style>
