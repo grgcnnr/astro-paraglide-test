@@ -5,6 +5,8 @@ import react from "@astrojs/react";
 
 import node from "@astrojs/node";
 
+import netlify from "@astrojs/netlify";
+
 export default defineConfig({
   integrations: [react()],
   experimental: {
@@ -25,7 +27,5 @@ export default defineConfig({
     ],
   },
   output: "server",
-  adapter: node({
-    mode: "standalone",
-  }),
+  adapter: netlify(),
 });
