@@ -1,0 +1,21 @@
+---
+import * as m from "@paraglide/messages"
+import Layout from "@layouts/Layout.astro"
+import { getLocale } from "@paraglide/runtime"
+
+import {
+  ReactWithChildPropsForContent,
+  ReactWithLangProp
+} from "@components/ReactExamples.tsx"
+---
+
+<Layout>
+  <h1>{m.reactHydrationPageTitle()}</h1>
+  <ReactWithChildPropsForContent client:load>
+    {m.reactHydrationPassedProps()}
+  </ReactWithChildPropsForContent>
+
+  <ReactWithLangProp client:load lang={getLocale()} />
+
+  TBD React HOC/wraper/hook
+</Layout>

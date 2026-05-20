@@ -1,0 +1,16 @@
+---
+import * as m from "@paraglide/messages"
+import Layout from "@layouts/Layout.astro"
+import {
+  ClientReact,
+  HydratedReact,
+  StaticReact
+} from "@components/ReactExamples.tsx"
+---
+
+<Layout>
+  <h1>{m.reactPageTitle()}</h1>
+  <StaticReact />
+  <HydratedReact client:idle />
+  <ClientReact client:only="react" />
+</Layout>

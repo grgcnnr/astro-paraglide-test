@@ -1,5 +1,14 @@
 {
   "$schema": "https://inlang.com/schema/inlang-message-format",
   "greeting": "Bonjour {username}",
-  "retort": "En fait, je préfère"
+  "retort": "En fait, je préfère",
+  "reactPageTitle": "Cette page présente divers composants React",
+  "staticReactText": "Ceci est du texte provenant d'un composant React statique, il n'est pas rendu côté client",
+  "hydratedReactText": "Ce texte provient d'un composant React rendu côté serveur puis hydraté",
+  "hydrationError": "ceci affiche présentement une erreur d'hydratation parce que le composant ne connaît pas la langue courante au moment du SSR, étant donné que ce sont des îlots et non rendus dans l'AST de la page. {#a href=$href}voici comment corriger ça{/a}",
+  "clientReactText": "Ce texte provient d'un composant React chargé uniquement côté client",
+  "clickMe": "cliquez ici",
+  "reactHydrationPageTitle": "Cette page présente quelques façons de contourner le problème d'hydratation",
+  "reactHydrationPassedProps": "Ceci passe les enfants comme props depuis la page astro, et peut quand même exécuter des effets côté client quand on clique sur le bouton",
+  "langPropText": "cet élément rend sa propre langue, mais la prop lang lui a été transmise par le composant Astro, donc il sait impérativement quelle langue utiliser à l'intérieur de l'îlot astro"
 }

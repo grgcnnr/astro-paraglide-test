@@ -1,5 +1,15 @@
 {
   "$schema": "https://inlang.com/schema/inlang-message-format",
   "greeting": "Hello {username}",
-  "retort": "Actually, I go by"
+  "retort": "Actually, I go by",
+
+  "reactPageTitle": "this page demonstrates various react components",
+  "staticReactText": "This is text from a static react component, it is not client-side rendered",
+  "hydratedReactText": "This text is from a react component that was SSR rendered then hydrated",
+  "hydrationError": "this is currently showing a hydration error because it's not aware of the current lang at SSR time since they are islands and not rendered As part of the page AST. {#a href=$href}here's how to fix it{/a}",
+  "clientReactText": "This text is from a react component that only loaded client side",
+  "clickMe": "click me",
+  "reactHydrationPageTitle": "This page shows a few ways to circumvent the hydration issue",
+  "reactHydrationPassedProps": "This passes children as props from the astro page, it can still run client effects when you click the button",
+  "langPropText": "this element renders its own language, but it has had the lang prop passed to it from the Astro component, so it knows imperatively what language to build inside the astro island"
 }

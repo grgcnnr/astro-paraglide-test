@@ -14,6 +14,9 @@ importers:
       '@astrojs/react':
         specifier: ^5.0.5
         version: 5.0.5(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
+      '@inlang/paraglide-js-react':
+        specifier: ^1.0.2
+        version: 1.0.2(@inlang/paraglide-js@2.18.0)(react@19.2.6)
       '@types/react':
         specifier: ^19.2.14
         version: 19.2.14
@@ -482,6 +485,12 @@ packages:
     engines: {node: ^18.17.0 || ^20.3.0 || >=21.0.0}
     cpu: [x64]
     os: [win32]
+
+  '@inlang/paraglide-js-react@1.0.2':
+    resolution: {integrity: sha512-3cs1VNTY836qn0/oAk+sPyAmM8nT5BOV3NMGud89nQGYlOJUxR0nYyeBLzelXR7lmi9iBWcPkpfNzvH464EeAg==}
+    peerDependencies:
+      '@inlang/paraglide-js': '>=2.11.0 <3'
+      react: ^18.0.0 || ^19.0.0
 
   '@inlang/paraglide-js@2.18.0':
     resolution: {integrity: sha512-Acp6htA5W7rS2kL3iMjhSr08eECz696MYsud+FBKrmahzM7PdywPVq9UOr9MaC/aV7AZPElrYcqYZOOlUri5fg==}
@@ -2214,6 +2223,11 @@ snapshots:
 
   '@img/sharp-win32-x64@0.34.5':
     optional: true
+
+  '@inlang/paraglide-js-react@1.0.2(@inlang/paraglide-js@2.18.0)(react@19.2.6)':
+    dependencies:
+      '@inlang/paraglide-js': 2.18.0
+      react: 19.2.6
 
   '@inlang/paraglide-js@2.18.0':
     dependencies:

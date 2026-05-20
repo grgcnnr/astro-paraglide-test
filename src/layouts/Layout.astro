@@ -1,5 +1,6 @@
 ---
 import LanguageSwitcher from "../components/LanguageSwitcher.astro"
+import { localizeHref } from "@paraglide/runtime.js"
 ---
 
 <html lang="en">
@@ -13,6 +14,12 @@ import LanguageSwitcher from "../components/LanguageSwitcher.astro"
   </head>
   <body>
     <LanguageSwitcher />
+    <hr />
+    <a href={localizeHref("/")}>Home</a> |
+    <a href={localizeHref("/react")}>Simple React examples</a> ->
+    <a href={localizeHref("/react/hydration")}
+      >React hydration methods examples</a
+    >
     <main>
       <slot />
     </main>

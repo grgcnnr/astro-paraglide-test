@@ -6,6 +6,8 @@
     "jsx": "react-jsx",
     "jsxImportSource": "react",
     "paths": {
+      "@layouts/*": ["./src/layouts/*"],
+      "@components/*": ["./src/components/*"],
       "@paraglide/*": ["./src/lib/paraglide/*"]
     }
   }

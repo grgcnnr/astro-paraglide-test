@@ -1,5 +1,14 @@
 {
   "$schema": "https://inlang.com/schema/inlang-message-format",
   "greeting": "ello ello ello, {username}",
-  "retort": "As a matter of fact my dear boy, I prefer"
+  "retort": "As a matter of fact my dear boy, I prefer",
+  "reactPageTitle": "this jolly old page demonstrates a variety of react components",
+  "staticReactText": "This is bittish text from a jolly old static react component, it is not client-side rendered",
+  "hydratedReactText": "This rather splendid text comes from a react component, SSR'd and then hydrated like a proper cuppa",
+  "hydrationError": "this is currently showing a frightful hydration error, you see, because it hasn't the foggiest about the current lang at SSR time — these are islands, not rendered as part of the page AST, what what. {#a href=$href}here's how to sort it out{/a}",
+  "clientReactText": "This text is from a react component what loaded entirely client-side, no SSR malarkey",
+  "clickMe": "have a tap on me",
+  "reactHydrationPageTitle": "This jolly old page demonstrates a few cunning ways to dodge the hydration issue, what what",
+  "reactHydrationPassedProps": "This passes the children along as props from the astro page, jolly clever — and it can still run client effects when you give the button a tap",
+  "langPropText": "this element renders its own language, you see, but the lang prop has been jolly well passed to it from the Astro component, so it knows imperatively which tongue to speak inside the astro island, what what"
 }
