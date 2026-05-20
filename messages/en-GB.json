@@ -3,12 +3,20 @@
   "greeting": "ello ello ello, {username}",
   "retort": "As a matter of fact my dear boy, I prefer",
   "reactPageTitle": "this jolly old page demonstrates a variety of react components",
+  "reactNote": "Do take note, dear chap, that recompiling the messages doesn't trigger a rebuild of the cached SSR component, so one is rather prone to hydration errors — not entirely sure how to remedy this yet, apart from giving the dev server a swift restart, but it doesn't affect production, what what",
   "staticReactText": "This is bittish text from a jolly old static react component, it is not client-side rendered",
   "hydratedReactText": "This rather splendid text comes from a react component, SSR'd and then hydrated like a proper cuppa",
-  "hydrationError": "this is currently showing a frightful hydration error, you see, because it hasn't the foggiest about the current lang at SSR time — these are islands, not rendered as part of the page AST, what what. {#a href=$href}here's how to sort it out{/a}",
+  "hydrationRichText": "This is a jolly old component with a custom-rendered child component, what what {#a href=|/|}home{/a}",
   "clientReactText": "This text is from a react component what loaded entirely client-side, no SSR malarkey",
   "clickMe": "have a tap on me",
   "reactHydrationPageTitle": "This jolly old page demonstrates a few cunning ways to dodge the hydration issue, what what",
   "reactHydrationPassedProps": "This passes the children along as props from the astro page, jolly clever — and it can still run client effects when you give the button a tap",
-  "langPropText": "this element renders its own language, you see, but the lang prop has been jolly well passed to it from the Astro component, so it knows imperatively which tongue to speak inside the astro island, what what"
+  "langPropText": "this element renders its own language, you see, but the lang prop has been jolly well passed to it from the Astro component, so it knows imperatively which tongue to speak inside the astro island, what what",
+
+  "pokemonPageTitle": "Pokémon, fetched on demand, what what",
+  "pokemonFetchIntro": "this jolly old page fetches (and route-caches) the pokémon from {#a href=|https://pokeapi.co|}https://pokeapi.co{/a}, splendid stuff",
+  "pokemonFetchMarkupNote": "Do take note, dear chap, the paragraph above with its link is rendered using `<ParaglideMessage/>`: a `<Trans/>`-like react component, on account of React render prop JSX not being permitted inline in astro files, what what — so one must jolly well import it from a separate tsx file. Frankly, far better to wrap the whole blooming thing in a static react component.",
+  "pokemonDynamicRoutingNote": "The subsequent pages employ a touch of dynamic routing to fetch pokémon data on demand — both cached and uncached versions, dear chap",
+
+  "uncached_version": "Uncached version"
 }

@@ -1,5 +1,5 @@
 // @ts-check
-import { defineConfig } from "astro/config";
+import { defineConfig, memoryCache } from "astro/config";
 import { paraglideVitePlugin } from "@inlang/paraglide-js";
 import react from "@astrojs/react";
 
@@ -7,10 +7,18 @@ import node from "@astrojs/node";
 
 export default defineConfig({
   integrations: [react()],
+  experimental: {
+    cache: {
+      provider: memoryCache(),
+    },
+    routeRules: {
+      "*": { swr: 1200 },
+    },
+  },
   vite: {
     plugins: [
       paraglideVitePlugin({
-        strategy: ["url", "baseLocale"],
+        strategy: ["url", "cookie", "baseLocale"],
         project: "./project.inlang",
         outdir: "./src/lib/paraglide",
       }),

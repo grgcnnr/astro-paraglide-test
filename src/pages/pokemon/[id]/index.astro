@@ -1,0 +1,45 @@
+---
+import { ParaglideMessage } from "@inlang/paraglide-js-react"
+import * as m from "@paraglide/messages"
+import { linkMarkup } from "@components/messageMarkup"
+import Layout from "@layouts/Layout.astro"
+import type { IPokemonRoot } from "../pokemon.types.ts"
+
+const { id } = Astro.params
+const urlParams = Astro.url.searchParams
+
+const pokemanRes = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`)
+
+if (!pokemanRes.ok || !id) {
+  Astro.response.status = 404
+  Astro.response.statusText = "Not found"
+  return
+}
+
+const pokeman = (await pokemanRes.json()) as IPokemonRoot
+
+// set cache unless uncached is set.
+if (!urlParams.has("uncached")) {
+  Astro.cache.set({
+    maxAge: 3600,
+    swr: 600,
+    tags: [id]
+  })
+}
+---
+
+<Layout>
+  <h1><a href="./">«-</a> {pokeman.name}</h1>
+  <p>
+    <ParaglideMessage message={m.pokemonFetchIntro} markup={linkMarkup} />
+  </p>
+  <p>
+    {
+      Object.entries(pokeman.sprites).map(([key, value]) =>
+        typeof value === "string" ? (
+          <img width="96" height="96" src={value} alt={key} />
+        ) : null
+      )
+    }
+  </p>
+</Layout>

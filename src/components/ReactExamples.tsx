@@ -5,17 +5,18 @@ import { locales } from "@paraglide/runtime";
 
 export const StaticReact = () => <p>🧊{m.staticReactText()}</p>;
 export const HydratedReact = () => (
-  <p>
-    <small>
+  <>
+    <p>
+      💦{m.hydratedReactText()} <ClickMeButton />
+    </p>
+    <p>
       <ParaglideMessage
-        message={m.hydrationError}
+        message={m.hydrationRichText}
         inputs={{ href: "/react/hydration" }}
         markup={{ a: ({ children, options }) => <a href={String(options.href)}>{children}</a> }}
       />
-    </small>
-    <br />
-    💦{m.hydratedReactText()} <ClickMeButton />
-  </p>
+    </p>
+  </>
 );
 export const ClientReact = () => (
   <p>

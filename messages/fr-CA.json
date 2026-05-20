@@ -3,12 +3,20 @@
   "greeting": "Bonjour {username}",
   "retort": "En fait, je préfère",
   "reactPageTitle": "Cette page présente divers composants React",
+  "reactNote": "À noter que recompiler les messages ne déclenche pas une reconstruction du composant SSR mis en cache, il est donc facile d'obtenir des erreurs d'hydratation. Je ne sais pas encore comment corriger cela à part redémarrer le serveur de développement, mais cela n'affecte pas la production",
   "staticReactText": "Ceci est du texte provenant d'un composant React statique, il n'est pas rendu côté client",
   "hydratedReactText": "Ce texte provient d'un composant React rendu côté serveur puis hydraté",
-  "hydrationError": "ceci affiche présentement une erreur d'hydratation parce que le composant ne connaît pas la langue courante au moment du SSR, étant donné que ce sont des îlots et non rendus dans l'AST de la page. {#a href=$href}voici comment corriger ça{/a}",
+  "hydrationRichText": "Ceci est un composant avec un composant enfant au rendu personnalisé {#a href=|/|}accueil{/a}",
   "clientReactText": "Ce texte provient d'un composant React chargé uniquement côté client",
   "clickMe": "cliquez ici",
   "reactHydrationPageTitle": "Cette page présente quelques façons de contourner le problème d'hydratation",
   "reactHydrationPassedProps": "Ceci passe les enfants comme props depuis la page astro, et peut quand même exécuter des effets côté client quand on clique sur le bouton",
-  "langPropText": "cet élément rend sa propre langue, mais la prop lang lui a été transmise par le composant Astro, donc il sait impérativement quelle langue utiliser à l'intérieur de l'îlot astro"
+  "langPropText": "cet élément rend sa propre langue, mais la prop lang lui a été transmise par le composant Astro, donc il sait impérativement quelle langue utiliser à l'intérieur de l'îlot astro",
+
+  "pokemonPageTitle": "Récupération de Pokémon à la demande",
+  "pokemonFetchIntro": "cette page récupère (et met en cache par route) les pokémon depuis {#a href=|https://pokeapi.co|}https://pokeapi.co{/a}",
+  "pokemonFetchMarkupNote": "N.B. : le paragraphe ci-dessus avec un lien est rendu à l'aide de `<ParaglideMessage/>` : un composant React similaire à `<Trans/>`, car le JSX des render props React ne peut pas être rendu directement dans les fichiers astro, il faut donc l'importer depuis un fichier tsx séparé. Il vaudrait mieux envelopper le tout dans un composant React statique.",
+  "pokemonDynamicRoutingNote": "Les pages suivantes utilisent le routage dynamique pour récupérer les données des pokémon à la demande (versions avec et sans cache)",
+
+  "uncached_version": "Version sans cache"
 }

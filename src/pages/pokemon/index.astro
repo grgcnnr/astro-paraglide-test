@@ -1,0 +1,57 @@
+---
+import { ParaglideMessage } from "@inlang/paraglide-js-react"
+import * as m from "@paraglide/messages"
+import { linkMarkup } from "@components/messageMarkup"
+import Layout from "@layouts/Layout.astro"
+
+type TPkmn = {
+  name: string
+  url: `https://pokeapi.co/api/v2/pokemon/${number}/`
+}
+
+type TReturnPkmn = TPkmn & { id: string }
+
+Astro.cache.set({
+  maxAge: 3600,
+  swr: 600
+})
+
+const pokemans = await fetch(
+  "https://pokeapi.co/api/v2/pokemon?limit=100000"
+).then((res) =>
+  res.json().then((data) =>
+    data.results.map(
+      (datum: TPkmn) =>
+        ({
+          name: datum.name,
+          url: datum.url,
+          id: String(datum.url.split("/").filter(Boolean).at(-1))
+        }) satisfies TReturnPkmn
+    )
+  )
+)
+---
+
+<Layout>
+  <h1>{m.pokemonPageTitle()}</h1>
+  <p>
+    <ParaglideMessage message={m.pokemonFetchIntro} markup={linkMarkup} />
+  </p>
+  <small>{m.pokemonFetchMarkupNote()}</small>
+  <p>{m.pokemonDynamicRoutingNote()}</p>
+
+  <ul>
+    {
+      pokemans.map((pokeman: TReturnPkmn) => (
+        <li>
+          <>
+            <a href={`/pokemon/${pokeman.id}`}>{pokeman.name}</a>{" "}
+            <a href={`/pokemon/${pokeman.id}?uncached=1`}>
+              ({m.uncached_version()})
+            </a>
+          </>
+        </li>
+      ))
+    }
+  </ul>
+</Layout>

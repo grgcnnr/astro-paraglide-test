@@ -10,7 +10,12 @@ import {
 
 <Layout>
   <h1>{m.reactPageTitle()}</h1>
+  <p class="note">
+    {m.reactNote()}
+  </p>
   <StaticReact />
+  <hr />
   <HydratedReact client:idle />
+  <hr />
   <ClientReact client:only="react" />
 </Layout>
